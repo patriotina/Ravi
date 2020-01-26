@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} #RaviПишет {% endblock %}
+
+{% block content %}
+    {% if latest_articles_list %}
+
+        <div class="card-columns">
+
+
+
+        {% for a in latest_articles_list %}
+            <div class="card border-dark" >
+                {% load static %}
+                <img src= "{% static "img/formens.jpg" %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ a.article_title }}</h5>
+                  <p class="card-text">{{ a.article_text|linebreaks }}</p>
+                </div>
+
+                <a href="{% url 'articles:detail' a.id %}">{{ a.article_title }}</a></br>
+
+                <i>{{ a.pub_date }}</i></br>
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
