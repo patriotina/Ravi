@@ -6,15 +6,23 @@ from django.db import models
 #
 # # Create your models here.
 
+
 class Photo(models.Model):
-    photo_file = models.ImageField(upload_to='imgs', max_length=50, default='imgs/def.jpg')
+    caption = models.CharField('Название', max_length=200)
+    photo_file = models.ImageField(upload_to='img', max_length=50)
+
+    def image_tag(self):
+        return '<img src="' + str(self.photo_file) + '" width = "150" height = "150" />'
+
+    def __str__(self):
+        return self.caption
 
 
 class Article(models.Model):
     article_title = models.CharField('Название статьи', max_length = 200)
     article_text = models.TextField('Текст статьи')
     pub_date = models.DateTimeField('Дата публикации')
-    photo = models.ForeignKey(Photo, on_delete=models.DO_NOTHING)
+    photo = models.ForeignKey(Photo, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     def __str__(self):
         return self.article_title

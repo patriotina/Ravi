@@ -11,8 +11,9 @@
 
         {% for a in latest_articles_list %}
             <div class="card border-dark" >
+
                 {% load static %}
-                <img src= "{% static "img/formens.jpg" %}" class="card-img-top" alt="...">
+                <img src= "/static/{{ a.photo.photo_file }}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{ a.article_title }}</h5>
                   <p class="card-text">{{ a.article_text|linebreaks }}</p>
