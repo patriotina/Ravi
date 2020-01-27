@@ -10,7 +10,7 @@ from django.urls import reverse
 # # Create your views here.
 def index(request):
     #return HttpResponse("hello here")
-    latest_articles_list = Article.objects.order_by('-pub_date')[:5]
+    latest_articles_list = Article.objects.order_by('-pub_date')    #[:5]
     return render(request, 'rwr/list.html', {'latest_articles_list': latest_articles_list})
 #
 def detail(request, article_id):
