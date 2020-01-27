@@ -8,7 +8,7 @@ class Photo_list(admin.ModelAdmin):
     list_display = ['caption', 'pictumb']
 
     def pictumb(self, obj):
-        return format_html('<img src="/static/{}" width=50px />'.format(obj.photo_file))
+        return format_html('<img src="/media/{}" width=50px />'.format(obj.photo_file))
 
 
 admin.site.register(Article)

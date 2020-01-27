@@ -1,2 +1,4 @@
 .idea/
 ravienv/
+db.sqlite3
+media/
